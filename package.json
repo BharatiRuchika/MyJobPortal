@@ -1,0 +1,30 @@
+{
+  "name": "job-portal-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "heroku postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix job-portal-frontend && npm run build --prefix job-portal-frontend"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.3.1",
+    "fs": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.7",
+    "morgan": "~1.9.1",
+    "multer": "^2.0.0-rc.2",
+  
+    "pug": "2.0.0-beta11",
+    "stream": "^0.0.2",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
+  }
+ 
+}
