@@ -26,7 +26,7 @@ function App() {
       <Route path="/register" exact component={Register}/>
       <ProtectedRoute path="/addjobs" exact component={AddJobs}/>
       <ProtectedRoute path="/myjobs" exact component={MyJobs}/>
-      <ProtectedRoute path="/myjobs" exact component={MyJobs}/>
+    
       <ProtectedRoute path="/applications" exact component={Application}/>
       <ProtectedRoute path="/applicantprofile" exact component={ApplicantProfile}/>
       
