@@ -1,4 +1,4 @@
-import {GET_JOBS_REQUEST,GET_JOBS_SUCCESS,GET_JOBS_FAIL,CLEAR_ERRORS,GET_MY_JOBS_FAIL,GET_MY_JOBS_REQUEST,JOB_APPLY_REQUEST,JOB_APPLY_SUCCESS,JOB_APPLY_FAIL,GET_MY_JOBS_SUCCESS,GET_APPLICATIONS_REQUEST,GET_APPLICATIONS_SUCCESS,GET_APPLICATIONS_FAIL,GET_JOB_APPLICATIONS_REQUEST,GET_JOB_APPLICATIONS_SUCCESS,GET_JOB_APPLICATIONS_FAIL} from "../constants/jobConstants";
+import {GET_JOBS_REQUEST,GET_JOBS_SUCCESS,GET_JOBS_FAIL,CLEAR_ERRORS,GET_MY_JOBS_FAIL,GET_MY_JOBS_REQUEST,JOB_APPLY_REQUEST,JOB_APPLY_SUCCESS,JOB_APPLY_FAIL,JOB_APPLY_RESET,GET_MY_JOBS_SUCCESS,GET_APPLICATIONS_REQUEST,GET_APPLICATIONS_SUCCESS,GET_APPLICATIONS_FAIL,GET_JOB_APPLICATIONS_REQUEST,GET_JOB_APPLICATIONS_SUCCESS,GET_JOB_APPLICATIONS_FAIL} from "../constants/jobConstants";
 export const myJobsReducer = (state={myjobs:[]},action)=>{
     switch(action.type){
         case GET_MY_JOBS_REQUEST:
@@ -80,7 +80,14 @@ export const jobApplyReducer = (state={},action)=>{
                 loading:false,
                 success:action.payload
             }
+            case JOB_APPLY_RESET:
+                return {
+                   ...state,
+                    success:false
+                }
         case JOB_APPLY_FAIL:
+            console.log("im in job apply fails");
+            console.log("payload",action.payload)
             return {
              
                 loading:false,

@@ -7,7 +7,7 @@ import MetaData from '../layouts/MetaData';
 import {Link} from 'react-router-dom';
 import {useDispatch,useSelector} from "react-redux";
 import {clearErrors,getJobs,Apply} from "../../actions/jobActions";
-
+import {JOB_APPLY_RESET} from "../../constants/jobConstants";
 import {Chip} from "@material-ui/core";
 const Home = ({history})=>{
   const dispatch = useDispatch();
@@ -18,14 +18,14 @@ const Home = ({history})=>{
   const handleApply = (jobId)=>{
     console.log("im in handleApply");
     dispatch(Apply(jobId));
-  
-     
-    
-  }
+   }
  useEffect(()=>{
       // if(!isAuthenticated){
       //   history.push("/login");
       // }
+      console.log("error",error);
+      console.log("success",success);
+      console.log("applyError",applyError);
       dispatch(getJobs());
       if(error){
         alert.error(error);
@@ -33,7 +33,10 @@ const Home = ({history})=>{
       }
       if(success){
         alert.success("You have successfully applied for this job");
+        
+        dispatch({type:JOB_APPLY_RESET})
       }
+     
       if(applyError){
         console.log("im in error");
         console.log("error",applyError);
@@ -43,7 +46,7 @@ const Home = ({history})=>{
       console.log("jobs",jobs);
       console.log("loading",loading);
      
-  },[dispatch,error,alert,applyError])
+  },[dispatch,error,alert,success,applyError])
     return (
       <>
       {jobs.length==0?<h1>No Jobs Available</h1>:
