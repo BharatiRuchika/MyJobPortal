@@ -85,17 +85,23 @@ const getData = ()=>{
           }
 }
     const updateStatus = async(status,id) => {
-        console.log("sttatus",id);
-        // const address = `${apiList.applications}/${application._id}`;
+      console.log("im in update status");
+        console.log("status",status);
+      
         const statusData = {
           status: status,
           dateOfJoining: new Date().toISOString(),
         };
+        try{
 var {data} =  await axios.put(`/api/applications/${id}`, statusData)
           console.log("data",data);
           alert.success(data.message);
           getData();
-      };
+      
+    }catch(error){
+      console.log("error",error);
+    }
+  }
       return(
         <>
         {jobapplications.length==0?<h1>No Applicants Available</h1>:(
