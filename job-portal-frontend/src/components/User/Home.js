@@ -18,6 +18,9 @@ const Home = ({history})=>{
   const handleApply = (jobId)=>{
     console.log("im in handleApply");
     dispatch(Apply(jobId));
+  
+     
+    
   }
  useEffect(()=>{
       // if(!isAuthenticated){
@@ -28,6 +31,9 @@ const Home = ({history})=>{
         alert.error(error);
         dispatch(clearErrors());
       }
+      if(success){
+        alert.success("You have successfully applied for this job");
+      }
       if(applyError){
         console.log("im in error");
         console.log("error",applyError);
@@ -36,10 +42,8 @@ const Home = ({history})=>{
       }
       console.log("jobs",jobs);
       console.log("loading",loading);
-      if(success){
-        alert.success("You have successfully applied for this job");
-      }
-  },[dispatch,isAuthenticated,error,alert,history,applyError,success])
+     
+  },[dispatch,error,alert,applyError])
     return (
       <>
       {jobs.length==0?<h1>No Jobs Available</h1>:
